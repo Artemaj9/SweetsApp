@@ -18,6 +18,7 @@ final class GameViewModel: ObservableObject {
   @Published var shields = 0
   @Published var hints = 0
   @Published var challengelvl = 1
+  @Published var moves = [3, 7, 5, 11, 10, 16, 15, 14, 13, 12]
 
   @Published var isWin = false
   @Published var showPopUp = false
