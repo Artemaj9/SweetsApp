@@ -21,5 +21,21 @@ enum Txt {
     "Ready to dodge worms and save me? Let’s flip some tiles and make this escape happen!"
   ]
   
+  static let howToPLay = [
+    "Flip two tiles at a time to find a matching pair of fruits.",
+    "If they match, great—they stay open!",
+    "If you hit a worm, game over!",
+    "Watch out! Worms move around after each turn, so stay sharp!",
+    "Nearby tiles flash for a second when you flip a card—use this to spot danger!"
+  ]
+  
+  static let infoTitles = [
+  "Slow and steady, let’s go!",
+  "How to Play?",
+  "Worm Beaters!",
+  "Challenge Mode",
+  "Bonus Game"
+  ]
+  
   static let dot = "\u{2022}"
 }

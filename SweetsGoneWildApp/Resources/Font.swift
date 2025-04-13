@@ -7,6 +7,7 @@ import SwiftUI
 enum CustomFont: String {
   case skranjiReg = "Skranji"
   case skranjiBold  = "Skranji Bold"
+  case snigletreg = "Sniglet Regular"
 }
 
 extension Font {

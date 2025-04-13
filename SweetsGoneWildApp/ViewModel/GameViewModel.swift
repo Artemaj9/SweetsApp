@@ -19,7 +19,11 @@ final class GameViewModel: ObservableObject {
   @Published var hints = 0
   @Published var challengelvl = 1
   @Published var moves = [3, 7, 5, 11, 10, 16, 15, 14, 13, 12]
-
+  @Published var isFirstGame = true
+  
+  
+  @Published var showInfo = false
+  
   @Published var isWin = false
   @Published var showPopUp = false
   @Published var time = 0
@@ -62,7 +66,7 @@ final class GameViewModel: ObservableObject {
     size.width
   }
   var header: CGFloat {
-    isSEight ? -size.height*0.42 + 44 : -size.height*0.42
+    isSEight ? -size.height*0.41 + 44 : -size.height*0.41
   }
   
   var isEightPlus: Bool {

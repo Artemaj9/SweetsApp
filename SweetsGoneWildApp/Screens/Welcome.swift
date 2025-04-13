@@ -15,7 +15,6 @@ struct Welcome: View {
       bg
       title1A
       
-      
       Image(.happysnail)
         .resizableToFit(height: 215)
         .xOffset(stage == 1 ? vm.w : vm.w*0.4)

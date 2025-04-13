@@ -10,20 +10,22 @@ struct MainView: View {
   @State private var startAnimation = false
   
   var body: some View {
-    ZStack {
-      bg
-      header
-      decoration
-      challengePlane
-      playbtn
-      flowers
-    }
-    .navigationDestination(for: SelectionState.self) { state in
-      if state == .game { Game() }
-      if state == .info { Info() }
-    }
-    .onAppear {
-      startAnimation = true
+    NavigationStack(path: $nm.path) {
+      ZStack {
+        bg
+        header
+        decoration
+        challengePlane
+        playbtn
+        flowers
+      }
+      .navigationDestination(for: SelectionState.self) { state in
+        if state == .game { Game() }
+        if state == .info { Info() }
+      }
+      .onAppear {
+        startAnimation = true
+      }
     }
   }
   
