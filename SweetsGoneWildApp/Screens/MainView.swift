@@ -22,6 +22,7 @@ struct MainView: View {
       .navigationDestination(for: SelectionState.self) { state in
         if state == .game { MenuLevels() }
         if state == .info { Info() }
+        if state == .play { Game() }
       }
       .onAppear {
         startAnimation = true

@@ -18,27 +18,37 @@ final class GameViewModel: ObservableObject {
   @Published var shields = 0
   @Published var hints = 0
   @Published var challengelvl = 1
-  @Published var moves = [3, 7, 5, 11, 10, 16, 15, 14, 13, 12]
+  @Published var moves = [4, 7, 5, 11, 10, 16, 15, 14, 13, 12]
   @Published var isFirstGame = true
   @Published var menuLevel = 1
   @Published var levelPassed = [false, false, false, false, false, true, false, true, false, false]//Array(repeating: false, count: 10)
   @Published var levelMoves = Array(repeating: 0, count: 10)
+ 
+  
+  @Published var gameMatrix: [[Int]] = [[]]
+  @Published var openMatrix: [[Bool]] = [[]]
   
   
+  
+  // Game View
+  @Published var isPause = false
   @Published var showInfo = false
-  
+  @Published var isBlocked = false
+  @Published var showHint = false
+  @Published var currentMoves = 0
   @Published var isWin = false
+  @Published var isShield = false
+  @Published var isAlreadyShielded = false
+  
+  
+  
+  
+  
   @Published var showPopUp = false
   @Published var time = 0
   private var cancellables = Set<AnyCancellable>()
 
-
-  @Published var showNoMoney = false
-  @Published var isGameOver = false
-  @Published var playerWon = false
-  @Published var finalWinnings: Int = 0
-  @Published var turnOn = true
-  @Published var bet: Int = 100
+  
   @Published var showGame = false
 
   // MARK: Game Setup

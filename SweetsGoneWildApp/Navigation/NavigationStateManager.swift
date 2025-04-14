@@ -7,6 +7,7 @@ import Foundation
 enum SelectionState: Hashable, Codable {
   case info
   case game
+  case play
 }
 
 class NavigationStateManager: ObservableObject {

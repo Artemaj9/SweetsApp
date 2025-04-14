@@ -37,5 +37,7 @@ enum Txt {
   "Bonus Game"
   ]
   
+  static let gameChallenge = "Finish the level within the move limit to complete the challenge and unlock the bonus game!"
+  
   static let dot = "\u{2022}"
 }

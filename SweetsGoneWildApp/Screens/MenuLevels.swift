@@ -8,42 +8,19 @@ struct MenuLevels: View {
   @EnvironmentObject var vm: GameViewModel
   @EnvironmentObject var nm: NavigationStateManager
   @State private var startAnimation = false
+  
     var body: some View {
       ZStack {
         bg
         header
         levelPlane
-        
-      
-        Image("fl\(vm.menuLevel)")
-          .resizableToFit(width: vm.w)
-          .yOffset(vm.h*0.2)
-          .xOffset(-vm.w*0.15)
-        
-        Image(.snaillevels)
-          .resizableToFit(height: 320)
-          .offset(startAnimation ? vm.w*0.3 : vm.w*0.7, vm.h*0.4)
-          .animation(.smooth(duration: 0.7), value: startAnimation)
-        
-        Image(.fworm)
-          .resizableToFit(height: 280)
-          .yOffset(startAnimation ? vm.h*0.55 : vm.h*0.9)
-          .xOffset(-vm.w*0.2)
-          .animation(.smooth(duration: 0.7), value: startAnimation)
-        
-        Button {
-          vm.showGame = true
-        } label: {
-          Image(.startgamebtn)
-            .resizableToFit(height: 170)
-        }
-        .offset(vm.w*0.25, vm.h*0.05)
+        decor
+        playbtn
       }
       .navigationBarBackButtonHidden()
       .onAppear {
         startAnimation = true
       }
-     
     }
   
   private var bg: some View {
@@ -72,6 +49,25 @@ struct MenuLevels: View {
                         }
                 )
 
+  }
+  
+  @ViewBuilder private var decor: some View {
+    Image("fl\(vm.menuLevel)")
+      .resizableToFit(width: vm.w)
+      .allowsHitTesting(false)
+      .yOffset(vm.h*0.2)
+      .xOffset(-vm.w*0.15)
+    
+    Image(.snaillevels)
+      .resizableToFit(height: 320)
+      .offset(startAnimation ? vm.w*0.3 : vm.w*0.7, vm.h*0.4)
+      .animation(.smooth(duration: 0.7), value: startAnimation)
+    
+    Image(.fworm)
+      .resizableToFit(height: 280)
+      .yOffset(startAnimation ? vm.h*0.55 : vm.h*0.9)
+      .xOffset(-vm.w*0.2)
+      .animation(.smooth(duration: 0.7), value: startAnimation)
   }
   
   private var header: some View {
@@ -211,6 +207,17 @@ struct MenuLevels: View {
     .yOffset(-vm.h*0.23)
     .transparentIfNot(startAnimation)
     .animation(.easeInOut, value: startAnimation)
+  }
+  
+  private var playbtn: some View {
+    Button {
+      nm.path.append(.play)
+    //  vm.showGame = true
+    } label: {
+      Image(.startgamebtn)
+        .resizableToFit(height: 170)
+    }
+    .offset(vm.w*0.25, vm.h*0.05)
   }
 }
 
