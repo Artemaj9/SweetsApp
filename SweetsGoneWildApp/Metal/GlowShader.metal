@@ -139,3 +139,9 @@ fragment float4 gradientShader(VertexOut in [[stage_in]], constant float &time [
   float shade = pattern(uv, time);
   return float4(colormap(shade).rgb, shade);
 }
+
+fragment float4 gradientShader2(VertexOut in [[stage_in]], constant float &time [[buffer(0)]], constant float2 &iResolution [[buffer(1)]]) {
+  float2 uv = in.texCoord;
+  float shade = pattern(uv, time + 1.5);
+  return float4(colormap(shade).rgb, shade);
+}

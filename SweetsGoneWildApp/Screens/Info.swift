@@ -9,6 +9,7 @@ struct Info: View {
   @EnvironmentObject var nm: NavigationStateManager
   @State private var startAnimation = false
   @State private var saturation: Double = 1
+  var isFirst: Bool = false
   var isFromMenu: Bool =  true
   
   var body: some View {
@@ -34,11 +35,12 @@ struct Info: View {
   
   private var header: some View {
     HStack {
-      Image(isFromMenu ? .homebtn : .backbtn)
+      Image(isFromMenu || isFirst ? .homebtn : .backbtn)
         .resizableToFit(height: 55)
         .asButton {
-          if isFromMenu {
+          if isFromMenu || isFirst {
             nm.path = []
+            vm.resetGame()
           } else {
             vm.showInfo = false
           }
@@ -52,7 +54,7 @@ struct Info: View {
     .padding(.leading, 8)
     .yOffset(vm.header)
     .transparentIfNot(startAnimation)
-    .animation(.easeIn(duration: 0.5).delay(1.3), value: startAnimation)
+    .animation(.easeIn(duration: 0.5).delay(0.4), value: startAnimation)
   }
   
   private var scroll: some View {
@@ -106,7 +108,6 @@ struct Info: View {
               Text(" He’s got me!")
                 .font(.custom(.skranjiReg, size: 15))
                 .foregroundColor(Color(hex: "FF0000"))
-              
             }
           }
         }
@@ -119,9 +120,11 @@ struct Info: View {
         HStack(alignment: .firstTextBaseline) {
           Text(Txt.dot)
             .sweetFont(size: 15, style: .snigletreg, color: .white)
+          
           Text("Hint")
             .font(.custom(.skranjiReg, size: 15))
             .foregroundColor(.white)
+          
           Text("– shows all worms on the board... until you make a move!")
             .font(.custom(.snigletreg, size: 15))
             .foregroundColor(.white)
@@ -130,9 +133,11 @@ struct Info: View {
         HStack(alignment: .firstTextBaseline) {
           Text(Txt.dot)
             .sweetFont(size: 15, style: .snigletreg, color: .white)
+          
           Text("Shield")
             .font(.custom(.skranjiReg, size: 15))
             .foregroundColor(Color(hex: "00E952"))
+          
           Text("– if I step on a worm, I don’t lose and can keep playing!")
             .font(.custom(.snigletreg, size: 15))
             .foregroundColor(.white)
@@ -164,6 +169,7 @@ struct Info: View {
         HStack(alignment: .firstTextBaseline) {
           Text(Txt.dot)
             .sweetFont(size: 15, style: .snigletreg, color: .white)
+          
           Text("Flip tiles to find pairs. Every perfect match wins a ")
             .font(.custom(.snigletreg, size: 15))
             .foregroundColor(.white)
@@ -176,6 +182,7 @@ struct Info: View {
         HStack(alignment: .firstTextBaseline) {
           Text(Txt.dot)
             .sweetFont(size: 15, style: .snigletreg, color: .white)
+          
           Text("BUT— one mistake = ")
             .font(.custom(.snigletreg, size: 15))
             .foregroundColor(.white)
@@ -188,10 +195,10 @@ struct Info: View {
         HStack(alignment: .firstTextBaseline) {
           Text(Txt.dot)
             .sweetFont(size: 15, style: .snigletreg, color: .white)
+          
           Text("Rewards stack up, so stay focused and grab as much as you can!")
             .font(.custom(.snigletreg, size: 15))
             .foregroundColor(.white)
-          
         }
         
         Group {
@@ -209,7 +216,7 @@ struct Info: View {
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, alignment: .center)
         
-        if vm.isFirstGame && !isFromMenu {
+        if vm.isFirstGame && isFirst {
           Button {
             // FIXME: ADD for game
             vm.isFirstGame = false
@@ -279,9 +286,7 @@ struct Info: View {
       }
       .allowsHitTesting(false)
     }
-    
     .yOffset(vm.h*0.15)
-
   }
 }
 

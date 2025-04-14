@@ -21,7 +21,7 @@ struct PauseView: View {
         .yOffset(-vm.h*0.05)
         
         pauseworm
-
+        info
       }
       .ignoresSafeArea()
       .onAppear {
@@ -44,7 +44,7 @@ struct PauseView: View {
     Image(.z)
       .resizableToFit(height: 180)
       .transparentIfNot(startAnimation)
-      .animation(.smooth(duration: 1.4).delay(1.5), value: startAnimation)
+      .animation(.smooth(duration: 0.7).delay(1), value: startAnimation)
       .offset(vm.w*0.15, vm.h*0.3)
   }
   
@@ -130,6 +130,12 @@ struct PauseView: View {
             .resizableToFit(height: 36)
         }
     }
+  }
+  
+  private var info: some View {
+        Info(isFromMenu: false)
+          .transparentIfNot(vm.showInfo)
+          .animation(.easeInOut, value: vm.showInfo)
   }
 }
 

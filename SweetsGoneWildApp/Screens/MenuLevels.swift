@@ -211,6 +211,8 @@ struct MenuLevels: View {
   
   private var playbtn: some View {
     Button {
+      vm.resetvm()
+      vm.generateLevel(level: vm.menuLevel)
       nm.path.append(.play)
     //  vm.showGame = true
     } label: {

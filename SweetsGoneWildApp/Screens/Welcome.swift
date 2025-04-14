@@ -28,7 +28,7 @@ struct Welcome: View {
       Image(.nextwelcbtn)
         .resizableToFit(height: 55)
         .asButton {
-          stage = 2
+          vm.isWelcome = false
         }
         .rotationEffect(Angle(degrees: startAnimation ? 0 : -720))
         .blur(radius: startAnimation ? 0 : 10)
