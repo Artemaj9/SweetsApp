@@ -20,6 +20,9 @@ final class GameViewModel: ObservableObject {
   @Published var challengelvl = 1
   @Published var moves = [3, 7, 5, 11, 10, 16, 15, 14, 13, 12]
   @Published var isFirstGame = true
+  @Published var menuLevel = 1
+  @Published var levelPassed = [false, false, false, false, false, true, false, true, false, false]//Array(repeating: false, count: 10)
+  @Published var levelMoves = Array(repeating: 0, count: 10)
   
   
   @Published var showInfo = false
@@ -36,10 +39,11 @@ final class GameViewModel: ObservableObject {
   @Published var finalWinnings: Int = 0
   @Published var turnOn = true
   @Published var bet: Int = 100
+  @Published var showGame = false
 
   // MARK: Game Setup
   func startGame() {
-   
+    showGame = true
   }
   
   func endGame() {

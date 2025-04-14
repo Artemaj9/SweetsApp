@@ -9,7 +9,7 @@ struct Info: View {
   @EnvironmentObject var nm: NavigationStateManager
   @State private var startAnimation = false
   @State private var saturation: Double = 1
-  var isFromMenu: Bool =  false
+  var isFromMenu: Bool =  true
   
   var body: some View {
     ZStack {
@@ -195,7 +195,7 @@ struct Info: View {
         }
         
         Group {
-          Text("Ready to outsmart that wiggly menace and save me?")
+          Text("Ready to outsmart that wiggly menace and save me? ")
             .font(.custom(.skranjiReg, size: 15))
             .foregroundColor(.white)
           +
@@ -205,10 +205,11 @@ struct Info: View {
             .foregroundColor(Color(hex: "A1FF00"))
         }
         .padding(.horizontal)
+        .padding(.top, 8)
         .multilineTextAlignment(.center)
         .frame(maxWidth: .infinity, alignment: .center)
         
-        if vm.isFirstGame {
+        if vm.isFirstGame && !isFromMenu {
           Button {
             // FIXME: ADD for game
             vm.isFirstGame = false

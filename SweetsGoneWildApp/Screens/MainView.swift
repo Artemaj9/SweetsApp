@@ -20,7 +20,7 @@ struct MainView: View {
         flowers
       }
       .navigationDestination(for: SelectionState.self) { state in
-        if state == .game { Game() }
+        if state == .game { MenuLevels() }
         if state == .info { Info() }
       }
       .onAppear {

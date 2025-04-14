@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "fl7.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
