@@ -40,8 +40,6 @@ struct Game: View {
           ZStack {
               BackBlurView(radius: 10)
 
-
-            
             VStack(spacing: 0) {
               ForEach(0..<vm.gameMatrix.count) { i in
                 HStack(spacing: 0) {
@@ -136,6 +134,10 @@ struct Game: View {
         .hPadding(8)
         .yOffset(vm.h*0.08)
       
+      if vm.isBonusGame {
+        BonusGame()
+      }
+        
      pause
       
       ShieldOver()
